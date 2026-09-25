@@ -44,6 +44,8 @@ uv tool upgrade mr-cli
 uv tool uninstall mr-cli
 ```
 
+Se o `upgrade` não pegar a versão nova, reinstale: `uv tool install --force git+https://gitlab.sebrae.com.br/df/mr-cli.git`.
+
 ## Configuração pessoal (`%APPDATA%\mr\.env`)
 
 | Variável | Para que serve |

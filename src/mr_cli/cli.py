@@ -77,7 +77,10 @@ def open_config() -> int:
     print(f"Templates pessoais:   {user_templates_file()}  (opcional)")
     print(f"Templates do pacote:  {BUNDLED_CONFIG}")
     if os.name == "nt":
-        os.startfile(user_env_file())  # abre no editor padrão
+        try:
+            os.startfile(user_env_file())  # abre no editor padrão
+        except OSError:  # sem programa associado a .env
+            subprocess.Popen(["notepad.exe", str(user_env_file())])
     return 0
 
 
@@ -85,7 +88,7 @@ def load_env(path: Path) -> None:
     """Carrega KEY=VALUE do .env sem sobrescrever variáveis já definidas."""
     if not path.exists():
         return
-    for raw in path.read_text(encoding="utf-8").splitlines():
+    for raw in path.read_text(encoding="utf-8-sig").splitlines():
         line = raw.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
