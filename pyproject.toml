@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mr-cli"
+version = "0.1.0"
+description = "Cria Merge Requests no GitLab a partir da branch atual, com templates de descrição por projeto."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+mr = "mr_cli.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mr_cli"]

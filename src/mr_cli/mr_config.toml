@@ -1,0 +1,105 @@
+# Templates de descrição de Merge Request, por projeto (compartilhados pelo time).
+#
+# Este arquivo vai junto com o pacote: alterações aqui chegam a todos na próxima atualização.
+# Para ter templates só seus, crie um mr_config.toml no mesmo formato na pasta mostrada por
+# "mr --config"; templates com o mesmo nome substituem os daqui.
+#
+# Cada projeto é identificado pelo caminho no GitLab (grupo/projeto), o mesmo do remoto "origin".
+# Cada template vira uma flag do comando mr com o mesmo nome:
+#   [projects."df/cerebro".templates.dv1]  ->  mr develop -dv1 "valor"
+#
+# Campos de um template:
+#   args        = tags preenchidas pelos valores passados na flag, na ordem
+#                 (ex.: args = ["link_banco"] -> mr develop -dv1 "https://..." preenche {{link_banco}})
+#   help        = texto exibido no "mr --help" (opcional)
+#   description = o texto da descrição. Use ''' ''' para escrever várias linhas sem precisar escapar nada.
+#
+# Tags automáticas (não precisam estar em args):
+#   {{descricao}}  -> valor de --description
+#   {{titulo}}  {{source}}  {{target}}  {{projeto}}
+#
+# Opcional por projeto: default = "dv2" -> template usado quando nenhuma flag -dvX for passada.
+
+[projects."df/cerebro"]
+# default = "dv2"
+
+[projects."df/cerebro".templates.dv1]
+help = "Com alteração de banco: informe o link do MR de banco"
+args = ["link_banco"]
+description = '''
+## Solicitação de mesclagem
+> [!IMPORTANT]
+> - As solicitações de mesclagem devem ser feitas primeiro para a branch `develop` e depois para a `master`, exceto nos casos de hotfix.
+> - As solicitações de mesclagem dos estagiários devem ter a aprovação do @g4f.lucasd.gqt antes de passar para o @caio.
+> - Revise todas as suas alterações antes de confirmar a solicitação de mesclagem.
+
+### Descrição do merge request
+{{descricao}}
+
+### Possui Alteração de Banco de Dados?
+- [x] Sim [{{link_banco}}]({{link_banco}})
+- [ ] Não
+
+### Possui Alteração na Pasta de Anexos?
+- [ ] Sim
+- [x] Não
+
+<details>
+<summary>Detalhes da Alteração na Pasta de Anexos:</summary>
+ <!-- Caso possua alteração na pasta de anexos, preencha a tabela abaixo. -->
+
+| Diretório de: | Diretório para:|
+|----- |------|
+|||
+
+</details>
+
+
+### Possui Mudança no Arquivo `config/web.php`?
+- [ ] Sim
+- [x] Não
+
+### É Necessário Limpar o Cache dos Assets?
+- [ ] Sim
+- [x] Não
+'''
+
+[projects."df/cerebro".templates.dv2]
+help = "Sem alteração de banco"
+description = '''
+## Solicitação de mesclagem
+> [!IMPORTANT]
+> - As solicitações de mesclagem devem ser feitas primeiro para a branch `develop` e depois para a `master`, exceto nos casos de hotfix.
+> - As solicitações de mesclagem dos estagiários devem ter a aprovação do @g4f.lucasd.gqt antes de passar para o @caio.
+> - Revise todas as suas alterações antes de confirmar a solicitação de mesclagem.
+
+### Descrição do merge request
+{{descricao}}
+
+### Possui Alteração de Banco de Dados?
+- [ ] Sim []()
+- [x] Não
+
+### Possui Alteração na Pasta de Anexos?
+- [ ] Sim
+- [x] Não
+
+<details>
+<summary>Detalhes da Alteração na Pasta de Anexos:</summary>
+ <!-- Caso possua alteração na pasta de anexos, preencha a tabela abaixo. -->
+
+| Diretório de: | Diretório para:|
+|----- |------|
+|||
+
+</details>
+
+
+### Possui Mudança no Arquivo `config/web.php`?
+- [ ] Sim
+- [x] Não
+
+### É Necessário Limpar o Cache dos Assets?
+- [ ] Sim
+- [x] Não
+'''
