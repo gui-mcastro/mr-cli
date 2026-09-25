@@ -22,7 +22,7 @@ Requer **git** e o **uv**, o gerenciador de ferramentas Python. O uv baixa o Pyt
 2. Instale o `mr`:
 
    ```powershell
-   uv tool install git+https://gitlab.sebrae.com.br/df/mr-cli.git
+   uv tool install git+https://github.com/gui-mcastro/mr-cli.git
    ```
 
    Se der erro de certificado (Zscaler), rode antes `$env:UV_NATIVE_TLS = "1"`.
@@ -35,7 +35,7 @@ Requer **git** e o **uv**, o gerenciador de ferramentas Python. O uv baixa o Pyt
 
    Esse comando abre o arquivo `.env` pessoal (`%APPDATA%\mr\.env`). Preencha `GITLAB_TOKEN` com um Personal Access Token com escopo `api`, gerado em <https://gitlab.sebrae.com.br/-/user_settings/personal_access_tokens>.
 
-Se preferir usar o pipx: `pipx install git+https://gitlab.sebrae.com.br/df/mr-cli.git`.
+Se preferir usar o pipx: `pipx install git+https://github.com/gui-mcastro/mr-cli.git`.
 
 ### Atualizar e desinstalar
 
@@ -44,7 +44,7 @@ uv tool upgrade mr-cli
 uv tool uninstall mr-cli
 ```
 
-Se o `upgrade` não pegar a versão nova, reinstale: `uv tool install --force git+https://gitlab.sebrae.com.br/df/mr-cli.git`.
+Se o `upgrade` não pegar a versão nova, reinstale: `uv tool install --force git+https://github.com/gui-mcastro/mr-cli.git`.
 
 ## Configuração pessoal (`%APPDATA%\mr\.env`)
 
